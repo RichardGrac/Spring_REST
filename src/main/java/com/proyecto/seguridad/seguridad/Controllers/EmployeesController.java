@@ -26,7 +26,8 @@ public class EmployeesController {
         if (employee != null) {
             return new ResponseEntity<>(employee, HttpStatus.OK);
         }
-        return new ResponseEntity<>("No Employee found for ID " + id, HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>
+                (returnMessage("No Employee found for ID " + id), HttpStatus.NOT_FOUND);
     }
 
     @PostMapping("/employees")
@@ -35,16 +36,16 @@ public class EmployeesController {
         if (newEmployee != null){
             return new ResponseEntity<>(newEmployee, HttpStatus.OK);
         }
-        return new ResponseEntity<>("Could not add a new Employee ", HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(returnMessage("Could not add a new Employee."), HttpStatus.BAD_REQUEST);
     }
 
     @DeleteMapping("/employees/{id}")
     public ResponseEntity<String> deleteEmployee(@PathVariable Integer id) {
         if (employeeService.getEmployee(id) != null) {
             employeeService.removeEmployee(id);
-            return new ResponseEntity<>("Employee with id '" + id + "' deleted", HttpStatus.OK);
+            return new ResponseEntity<>(returnMessage("Employee with id '" + id + "' deleted"), HttpStatus.OK);
         }
-        return new ResponseEntity<>("No Employee found for ID " + id, HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(returnMessage("No Employee found for ID " + id), HttpStatus.NOT_FOUND);
     }
 
     @PutMapping("/employees")
@@ -53,7 +54,11 @@ public class EmployeesController {
         if (employee != null) {
             return new ResponseEntity<>(employee, HttpStatus.OK);
         }
-        return new ResponseEntity<>("Could not update your Employee", HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(returnMessage("Could not update your Employee"), HttpStatus.BAD_REQUEST);
+    }
+
+    private String returnMessage(String message){
+        return  "{\"message\": \"" + message + "\"}";
     }
 
 }
