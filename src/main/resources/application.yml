@@ -3,13 +3,14 @@ spring:
     url: jdbc:mysql://localhost:3306/proyecto_seguridad?useSSL=false
     username: root
     password: admin
+    initialization-mode: never # DML Scripts Manuales
   jpa:
-#    show-sql: true # Que nos muestre el sql en pantalla (En el Log las diferentes Queries)
     hibernate:
-      # Cuando arranquemos el servidor comprobar? si las Entidades corresponden con las tablas, sino las actualiza.
       ddl-auto: update
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.MySQL5Dialect
 server:
   port: 9000
+
+# Compilar 3 veces para cuando se tenga Servidor Linux y Windows Server:
+# Arrancar con "ddl-auto: update" e "initialization-mode: never"
+# Luego en "ddl-auto: none" e "initialization-mode: always" (Habrá error de Compílación)
+# Finalmente "initization-mode: never" y "ddl-auto: none"

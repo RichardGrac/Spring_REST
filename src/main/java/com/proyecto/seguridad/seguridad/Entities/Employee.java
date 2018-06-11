@@ -12,7 +12,7 @@ import javax.persistence.*;
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", unique = true, nullable = false)
+    @Column(name = "id_emp", unique = true, nullable = false)
     private Integer id;
 
     @Column(name = "name", nullable = false)
@@ -26,4 +26,11 @@ public class Employee {
 
     @Column(name = "mobile", nullable = false)
     private String mobile;
+
+    @Column(name = "secKey", nullable = false)
+    private String secKey;
+
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_add")
+    private Address address;
 }

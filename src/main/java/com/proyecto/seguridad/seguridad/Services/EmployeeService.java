@@ -1,7 +1,10 @@
 package com.proyecto.seguridad.seguridad.Services;
 
+//import com.proyecto.seguridad.seguridad.Converters.AddressConverter;
 import com.proyecto.seguridad.seguridad.Converters.EmployeeConverter;
+//import com.proyecto.seguridad.seguridad.Entities.Address;
 import com.proyecto.seguridad.seguridad.Entities.Employee;
+//import com.proyecto.seguridad.seguridad.Models.AddressModel;
 import com.proyecto.seguridad.seguridad.Models.EmployeeModel;
 import com.proyecto.seguridad.seguridad.Repository.EmployeeRepository;
 import org.apache.commons.logging.Log;
@@ -20,6 +23,9 @@ public class EmployeeService {
     @Autowired
     private EmployeeConverter employeeConverter;
 
+//    @Autowired
+//    private AddressConverter addressConverter;
+
     @Autowired
     private EmployeeRepository employeeRepository;
 
@@ -27,6 +33,7 @@ public class EmployeeService {
         LOG.info("METHOD: getAllEmployees()");
         List<EmployeeModel> employeeModels = new ArrayList<>();
         for (Employee employee : employeeRepository.findAll()){
+            System.out.println("--- printing employ --->>> " + employee.toString());
             employeeModels.add(employeeConverter.entityToModel(employee));
         }
         return employeeModels;

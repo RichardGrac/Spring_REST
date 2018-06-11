@@ -1,5 +1,6 @@
 package com.proyecto.seguridad.seguridad.Controllers;
 
+import com.proyecto.seguridad.seguridad.Models.AddressModel;
 import com.proyecto.seguridad.seguridad.Models.EmployeeModel;
 import com.proyecto.seguridad.seguridad.Services.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
