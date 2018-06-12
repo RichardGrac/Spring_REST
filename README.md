@@ -1,2 +1,5 @@
 # Spring_REST
-Employees CRUD with RESTful services of Java Spring.
+Employees CRUD in Java Spring:
+  * RESTful services 
+  * Encrypted data with AES256
+  * Fragmented Database
