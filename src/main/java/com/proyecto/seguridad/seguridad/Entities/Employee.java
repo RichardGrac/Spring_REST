@@ -6,7 +6,6 @@ import javax.persistence.*;
 @Entity
 @Table(name = "Employee")
 @AllArgsConstructor
-@NoArgsConstructor
 @ToString @EqualsAndHashCode
 @Getter @Setter
 public class Employee {
@@ -33,4 +32,14 @@ public class Employee {
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "id_add")
     private Address address;
+
+    public Employee(){
+        this.id = 0;
+        this.firstName = "";
+        this.lastName = "";
+        this.email = "";
+        this.mobile = "";
+        this.secKey = "";
+        this.address = null;
+    }
 }

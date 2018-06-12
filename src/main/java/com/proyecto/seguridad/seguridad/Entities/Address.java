@@ -7,7 +7,6 @@ import javax.persistence.*;
 @Entity
 @Table(name = "Address")
 @AllArgsConstructor
-@NoArgsConstructor
 @EqualsAndHashCode
 @Getter
 @Setter
@@ -44,6 +43,18 @@ public class Address {
 
     @OneToOne(mappedBy = "address", fetch = FetchType.LAZY)
     private Employee employeee;
+
+    public Address() {
+        this.street = "";
+        this.number = "";
+        this.colony = "";
+        this.city = "";
+        this.state = "";
+        this.zip = "";
+        this.country = "";
+        this.secKey = "";
+        this.employeee = null;
+    }
 
     /* Personal toString() in order to don't get a infinite loop printing 'employee'. */
     @Override

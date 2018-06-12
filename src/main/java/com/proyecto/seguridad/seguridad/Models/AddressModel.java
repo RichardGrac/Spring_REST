@@ -4,10 +4,9 @@ import lombok.*;
 
 @Getter @Setter
 @AllArgsConstructor
-@NoArgsConstructor
 @ToString @EqualsAndHashCode
 public class AddressModel {
-    private int id;
+    private Integer id;
     private String street;
     private String  number;
     private String colony;
@@ -15,6 +14,17 @@ public class AddressModel {
     private String state;
     private String zip;
     private String country;
+
+    public AddressModel() {
+        this.id = 0;
+        this.street = "";
+        this.number = "";
+        this.colony = "";
+        this.city = "";
+        this.state = "";
+        this.zip = "";
+        this.country = "";
+    }
 
     public AddressModel(String street, String number, String colony, String city, String state, String zip, String country) {
         this.street = street;
